@@ -1,4 +1,5 @@
 from abc import abstractmethod, abstractproperty
+from email import message
 
 
 class Event():
@@ -18,15 +19,15 @@ class Event():
         print(f"This is the alert with the code: {alert}")
 
 # Testing the Event class and event handler
-alert = "Test"
-
-check = Event()
-check.event(alert)
 
 class MockEvent(Event):
     def event(self, message):
         print(f"Mock event happened: {message}")
         
+message = "Test"
+
+check = MockEvent()
+print(check.event(message))
         
         
         
