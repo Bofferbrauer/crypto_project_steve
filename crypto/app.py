@@ -1,13 +1,18 @@
-from asyncio import events
-import market_events.event
-import message_delivery.sender
+
+from market_events.event import Event
+from message_delivery.sender import Sender
+from market_events.event import MockEvent
+
 
 class App():
-    def __init__(self, events):
+    def __init__(self, events, sender):
         self.events = events
-        print(f"You had the following event: {events} ")
+        self.sender = sender
+        
+        print(f"{sender}, you had the following event: {events} ")
 
-events = "Test"
+events = Event()
+sender = Sender()
 
 start = App()
 print(start.events(events))
