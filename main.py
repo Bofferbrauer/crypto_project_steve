@@ -9,8 +9,8 @@ mock_senders = [Mocksender()]
 # mock_senders.send(events_list[0])
 events = [MockEvent(mock_senders)]
 
-app = App(events)
+app = App(events, 5)
 
-App.start()
+app.start()
 
 
