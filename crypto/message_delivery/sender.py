@@ -1,10 +1,9 @@
 from abc import abstractmethod
-from email import message
 
 
 class Sender():
     @abstractmethod
-    def send(self):
+    def send(self, message):
         pass
 
 class Mocksender(Sender):
@@ -13,7 +12,7 @@ class Mocksender(Sender):
 
 
 # Testing the Mocksender and abstract Sender classes
-message = mock_event
+message = "Test"
 
 mock_sender = Mocksender()
 mock_sender.send(message)

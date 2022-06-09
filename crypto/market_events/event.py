@@ -1,5 +1,4 @@
 from abc import abstractmethod, abstractproperty
-from email import message
 
 
 class Event():
@@ -7,8 +6,8 @@ class Event():
     def event(self):
         pass
 
-    def __init__(self): # * Add event and senders later
-        pass
+    def __init__(self, senders): # * Add event later
+        self.senders = senders
 
     @abstractproperty
     def condition(self):
