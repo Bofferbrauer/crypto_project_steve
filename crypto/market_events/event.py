@@ -1,14 +1,16 @@
 from abc import abstractmethod, abstractproperty
-from email import message
+# from crypto.message_delivery.sender import message
 
 
 class Event():
+    
+    def __init__(self, senders): # * Add senders and event later
+        self.senders = senders
+        # pass
+
     @abstractmethod
     def event(self):
         pass
-
-    def __init__(self, senders): # * Add event later
-        self.senders = senders
 
     @property
     @abstractmethod # ? this was the supposed way to do it
@@ -18,9 +20,10 @@ class Event():
     @property
     @abstractmethod
     def message(self, alert):
-        print(f"This is the alert with the code: {alert}")
+        # print(f"This is the alert with the code: {alert}") # ! Not in an abstract method!
+        pass
     
-    def check(self):
+    def check(self, senders):
         if self.condition():
             for senders in self.senders:
                 senders.send(self.message)
@@ -34,10 +37,11 @@ class Event():
 class MockEvent(Event):
     def event(self, message):
         print(f"Mock event happened: {message}")
-        
+
+
 message = "Test"
 
-check = MockEvent()
+check = MockEvent("Mark")
 print(check.event(message))
         
         

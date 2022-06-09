@@ -1,5 +1,4 @@
 from abc import abstractmethod
-from email import message
 
 
 class Sender():
