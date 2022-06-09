@@ -1,4 +1,4 @@
-from abc import abstractmethod, abstractproperty
+from abc import abstractmethod
 # from crypto.message_delivery.sender import message
 
 
@@ -30,19 +30,24 @@ class Event():
                 print("It works!")
                 
             
-        
+# check = Event("Mark")
+# print(check.event(message))        
 
 # Testing the Event class and event handler
 
 class MockEvent(Event):
-    def event(self, message):
+    def condition(self):
+        return True
+        
+    def event(self, message):         
         print(f"Mock event happened: {message}")
 
 
-message = "Test"
 
-check = MockEvent("Mark")
-print(check.event(message))
+
+message = "he BTCUSDT has reached a value of X on Binance"
+
+
         
         
         
