@@ -17,6 +17,7 @@ class Event():
     # @abstractproperty # ! Depreciated, do not use anymore
     def condition(self):
         pass
+    
     @property
     @abstractmethod
     def message(self, alert):
@@ -36,9 +37,11 @@ class Event():
 # Testing the Event class and event handler
 
 class MockEvent(Event):
+    @property
     def condition(self):
         return True
-        
+
+    @property    
     def event(self, message):         
         print(f"Mock event happened: {message}")
 

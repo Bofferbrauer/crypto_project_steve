@@ -12,9 +12,9 @@ class Mocksender(Sender):
 
 
 # Testing the Mocksender and abstract Sender classes
-message = "Test"
+# message = "Test"
 
-mock_sender = Mocksender()
-mock_sender.send(message)
+# mock_sender = Mocksender()
+# mock_sender.send(message)
         
         

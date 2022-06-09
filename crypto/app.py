@@ -1,7 +1,7 @@
-from market_events.event import MockEvent
-from market_events.event import Event
+# from market_events.event import MockEvent
+# from market_events.event import Event
 # import message_delivery.sender
-import market_events.event
+# import market_events.event
 
 class App():
     def __init__(self, events):
