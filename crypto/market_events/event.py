@@ -7,16 +7,27 @@ class Event():
     def event(self):
         pass
 
-    def __init__(self): # * Add event and senders later
-        pass
+    def __init__(self, senders): # * Add event later
+        self.senders = senders
 
-    @abstractproperty
+    @property
+    @abstractmethod # ? this was the supposed way to do it
+    # @abstractproperty # ! Depreciated, do not use anymore
     def condition(self):
         pass
-
-    @abstractproperty
+    @property
+    @abstractmethod
     def message(self, alert):
         print(f"This is the alert with the code: {alert}")
+    
+    def check(self):
+        if self.condition():
+            for senders in self.senders:
+                senders.send(self.message)
+                print("It works!")
+                
+            
+        
 
 # Testing the Event class and event handler
 
