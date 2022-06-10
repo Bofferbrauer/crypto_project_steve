@@ -19,9 +19,6 @@ class App():
             sleep(self.time_interval)
             
 
-# events = "Test"
-
-# events = MockEvent
 
 
         
