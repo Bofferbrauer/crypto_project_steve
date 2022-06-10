@@ -8,9 +8,9 @@ class Event():
         self.senders = senders
         # pass
 
-    @abstractmethod
-    def event(self):
-        pass
+    # @abstractmethod
+    # def event(self):
+    #     pass
 
     @property
     @abstractmethod # ? this was the supposed way to do it
@@ -20,15 +20,15 @@ class Event():
     
     @property
     @abstractmethod
-    def message(self, alert):
+    def message(self):
         # print(f"This is the alert with the code: {alert}") # ! Not in an abstract method!
         pass
     
-    def check(self, senders):
-        if self.condition():
+    def check(self):
+        if self.condition:
             for senders in self.senders:
                 senders.send(self.message)
-                print("It works!")
+#                print("It works!")
                 
             
 # check = Event("Mark")
@@ -42,13 +42,13 @@ class MockEvent(Event):
         return True
 
     @property    
-    def event(self, message):         
-        print(f"Mock event happened: {message}")
+    def message(self):
+        message = "The BTCUSDT has reached a value of X on Binance"
+        return message
 
 
 
 
-message = "he BTCUSDT has reached a value of X on Binance"
 
 
         

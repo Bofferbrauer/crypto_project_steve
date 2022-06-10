@@ -16,7 +16,7 @@ class App():
         while True:
             for event in self.events:
                 event.check()
-            sleep(self.time_inerval)
+            sleep(self.time_interval)
             
 
 # events = "Test"
