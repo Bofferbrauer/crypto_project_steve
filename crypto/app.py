@@ -5,7 +5,7 @@
 
 from time import sleep
 
-
+# Taking the content from the Event and sets up an interval to publish the message to the terminal
 class App():
     def __init__(self, events, time_interval):
         self.events = events
