@@ -43,11 +43,13 @@ test_pair = Pair.generic_name(first="BTC", second="USDT")
 print(test_pair)
         
 class DataSource():
-    pass
+    def __init__(self, Pair : Pair):    
+        self.pair = Pair
 
     @abstractmethod
     def get_order_book(self):
         pass
+
 
 
 
