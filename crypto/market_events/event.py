@@ -4,8 +4,9 @@ from abc import abstractmethod
 # Setting up an Event handler that will take the message from the Sender and handles it
 class Event():
     
-    def __init__(self, senders): # * Add senders and event later
+    def __init__(self, senders, data_source): # TODO Add senders and data_source later
         self.senders = senders
+        self.data_source = data_source
         # pass
 
 
@@ -27,6 +28,9 @@ class Event():
             for senders in self.senders:
                 senders.send(self.message)
 #                print("It works!")
+
+    def data_source(self):
+        
                        
 
 # Setting up the Mock Event, which will add a message to to the one from the Sender

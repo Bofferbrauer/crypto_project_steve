@@ -1,7 +1,7 @@
-# from crypto.data.source import DataSource
+from crypto.data.source import DataSource # ? Can't find it and throws an error
 import requests
 import json
 
-class Binance():
+class Binance(DataSource):
     req = requests.get("https://api.binance.com/api/v3/depth")
     print(req)
