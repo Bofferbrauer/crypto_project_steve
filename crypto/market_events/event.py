@@ -27,15 +27,18 @@ class Event():
         if self.condition:
             for senders in self.senders:
                 senders.send(self.message)
+            for data in self.data_source:
+                data.send(self.message)
+                
 #                print("It works!")
 
-    def data_source(self):
         
                        
 
 # Setting up the Mock Event, which will add a message to to the one from the Sender
 
 class MockEvent(Event):
+
     @property
     def condition(self):
         return True
