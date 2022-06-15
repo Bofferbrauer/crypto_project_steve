@@ -48,20 +48,21 @@ class OrderBook(BaseModel):
 class Pair(BaseModel):
     first: str
     second: str
-    def generic_name(first, second) -> str:
-        print("".join(first) + "_" + "".join(second))
+
+    @property
+    def generic_name(first : str, second : str) -> str:
+        trade_pair = ("".join(first) + "_" + "".join(second))
+        return trade_pair
+        # faster way to do this:
+        # return f"{self.first}_{self.second}"
 
 test_pair = Pair.generic_name(first="BTC", second="USDT")
 print(test_pair)
         
 class DataSource():
-    def __init__(self, pair : Pair):    
-        self.pair = Pair
+    # def __init__(self, pair : Pair):    
+    #     self.pair = Pair
 
     @abstractmethod
-    def get_order_book(self) -> None:
+    def get_order_book(self, pair : Pair) -> OrderBook:
         pass
-
-
-
-
