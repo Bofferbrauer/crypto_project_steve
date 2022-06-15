@@ -20,18 +20,30 @@ class OrderBook(BaseModel):
             return values
         else:
             raise ValueError("The asking price is too high")
-            
-    def mid(bid, ask) -> List[PositiveFloat]:
-        return((bid+ask)/2)
 
-# try:
-#     test = OrderBook(bid=2.3, ask=3.6, bid_volume=8, ask_volume=2.3)
-#     print(f" The price paid is {test.bid}, the asking price was {test.ask}, wanted to buy {test.bid_volume} and got {test.ask_volume}." )
-#     test2 = OrderBook(bid=2.3, ask=1.6, bid_volume=8, ask_volume=2.3)
-#     print(f" The price paid is {test2.bid}, the asking price was {test2.ask}, wanted to buy {test2.bid_volume} and got {test2.ask_volume}." )
+        
+        # different way to do it with a dictionnary:
 
-# except ValueError as e:
-#     print(e)
+        # @root_validator
+        # def check_ask_gt_bid(cls, values: Dict[str, float]) -> Dict[str, float]:
+        #     if values["bid"] >= values["ask"]:
+        #         raise ValueError("The asking price is too high")
+        #     return values
+                
+    # Getting the median value between the bid and ask values
+    @property        
+    def mid(self) -> PositiveFloat:
+        return((self.bid + self.ask)/2)
+
+
+# * try:
+# *     test = OrderBook(bid=2.3, ask=3.6, bid_volume=8, ask_volume=2.3)
+# *     print(f" The price paid is {test.bid}, the asking price was {test.ask}, wanted to buy {test.bid_volume} and got {test.ask_volume}." )
+# *     test2 = OrderBook(bid=2.3, ask=1.6, bid_volume=8, ask_volume=2.3)
+# *     print(f" The price paid is {test2.bid}, the asking price was {test2.ask}, wanted to buy {test2.bid_volume} and got {test2.ask_volume}." )
+# *
+# *  except ValueError as e:
+# *    print(e)
 
 class Pair(BaseModel):
     first: str

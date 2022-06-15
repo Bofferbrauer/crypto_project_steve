@@ -13,17 +13,17 @@ class Event():
     @property
     @abstractmethod # ? this was the supposed way to do it
     # @abstractproperty # ! Depreciated, do not use anymore
-    def condition(self):
+    def condition(self) -> None:
         pass
     
     @property
     @abstractmethod
-    def message(self):
+    def message(self) -> None:
         # print(f"This is the alert with the code: {alert}") # ! Not in an abstract method!
         pass
     
     # Checking if the Class is working
-    def check(self):
+    def check(self) -> str:
         if self.condition:
             for senders in self.senders:
                 senders.send(self.message)
@@ -40,12 +40,12 @@ class Event():
 class MockEvent(Event):
 
     @property
-    def condition(self):
+    def condition(self) -> bool:
         return True
 
     # Adding the message the MockEvent will send
     @property    
-    def message(self):
+    def message(self) -> str:
         message = "The BTCUSDT has reached a value of X on Binance"
         return message
 
