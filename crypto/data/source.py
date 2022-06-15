@@ -56,13 +56,16 @@ class Pair(BaseModel):
         # faster way to do this:
         # return f"{self.first}_{self.second}"
 
-test_pair = Pair.generic_name(first="BTC", second="USDT")
-print(test_pair)
+# test_pair = Pair.generic_name(first="BTC", second="USDT")
+# print(test_pair)
         
-class DataSource():
-    # def __init__(self, pair : Pair):    
+class DataSource:
+
+    #   def __init__(self, pair : Pair): # ? apparently not necessary    
     #     self.pair = Pair
 
     @abstractmethod
     def get_order_book(self, pair : Pair) -> OrderBook:
         pass
+
+    # ? This retrieves the current order book from the data source
