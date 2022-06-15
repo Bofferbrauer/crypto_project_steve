@@ -1,6 +1,6 @@
 from abc import abstractmethod
-from pydantic import BaseModel, PositiveFloat, ValidationError, root_validator
-from typing import List, Dict
+from pydantic import BaseModel, PositiveFloat, root_validator
+from typing import Dict
 
 # Setting up the values and making sure they're positive float numbers
 class OrderBook(BaseModel):
@@ -11,7 +11,7 @@ class OrderBook(BaseModel):
 
     # Validating the results and throwing an error if an entry is not a positive float
     @root_validator
-    def check_price(cls,values):
+    def check_price(cls,values : float):
         bid_x = values.get("bid")
         ask_x = values.get("ask")
 
@@ -35,7 +35,7 @@ class OrderBook(BaseModel):
     def mid(self) -> PositiveFloat:
         return((self.bid + self.ask)/2)
 
-
+# * Testing the root_validator:
 # * try:
 # *     test = OrderBook(bid=2.3, ask=3.6, bid_volume=8, ask_volume=2.3)
 # *     print(f" The price paid is {test.bid}, the asking price was {test.ask}, wanted to buy {test.bid_volume} and got {test.ask_volume}." )
@@ -48,18 +48,18 @@ class OrderBook(BaseModel):
 class Pair(BaseModel):
     first: str
     second: str
-    def generic_name(first, second):
+    def generic_name(first, second) -> str:
         print("".join(first) + "_" + "".join(second))
 
 test_pair = Pair.generic_name(first="BTC", second="USDT")
 print(test_pair)
         
 class DataSource():
-    def __init__(self, Pair : Pair):    
+    def __init__(self, pair : Pair):    
         self.pair = Pair
 
     @abstractmethod
-    def get_order_book(self):
+    def get_order_book(self) -> None:
         pass
 
 
