@@ -1,10 +1,15 @@
 from abc import abstractmethod
+from typing import List
+from crypto.data.source import DataSource
+from crypto.message_delivery.sender import Sender
+
+
 # from crypto.message_delivery.sender import message
 
 # Setting up an Event handler that will take the message from the Sender and handles it
 class Event():
     
-    def __init__(self, senders, data_source): # TODO Add senders and data_source later
+    def __init__(self, senders: List[Sender], data_source : DataSource): # TODO Add senders and data_source later
         self.senders = senders
         self.data_source = data_source
         # pass
@@ -23,7 +28,7 @@ class Event():
         pass
     
     # Checking if the Class is working
-    def check(self) -> str:
+    def check(self) -> None:
         if self.condition:
             for senders in self.senders:
                 senders.send(self.message)
